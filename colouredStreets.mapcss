@@ -1,0 +1,276 @@
+
+meta 
+{
+	title: "Coloured Streets";
+	version: "2.0.18_2014-02-26"; 
+	description: "Colouring of streets, buildings and address nodes with the same first letter of the street name in the same colour. (Let me know if you miss special characters. I will add them.)";
+	icon: "http://upload.wikimedia.org/wikipedia/commons/3/3a/ColouredStreetsIcon.png";
+	author: "geozeisig, Klumbumbus";
+	link: "http://josm.openstreetmap.de/wiki/Styles/Coloured_Streets";
+	watch-modified: true;
+	/* This mapcss mappaint style was created for JOSM 6767. I try to support future versions of JOSM as long as I'm able to.*/
+}
+
+meta[lang=de]
+{
+	title: "Coloured Streets";
+	description: "Einfärben von Straßen, Gebäuden und Adressnodes mit gleichem Anfangsbuchstabe des Straßennamens in der gleichen Farbe. (Gib mir Bescheid, wenn Sonderzeichen fehlen. Ich werde sie hinzufügen.)";
+}
+
+
+/* highlight areas, ways and nodes*/
+	/* all unknown characters in white color and all rules, which apply to all colors; different rules for different zoom*/
+area|z18-["addr:street"],
+relation[type="associatedStreet"] > area|z18-["addr:housenumber"]
+{ 
+	fill-color: #ffffff; 
+	color: #ffffff;
+	width: 3; 
+	fill-opacity:0.2;	
+	text-halo-radius: 3;
+	text-halo-color: #ffffff;
+	text: eval(cond(has_tag_key(name), concat(tag("addr:housenumber"), " | ", tag("name")), tag("addr:housenumber")));
+}
+area|z-17["addr:street"],
+relation[type="associatedStreet"] > area|z-17["addr:housenumber"]
+{ 
+	fill-color: #ffffff; 
+	color: #ffffff;
+	width: 3; 
+	fill-opacity:0.2;	
+	text: ;
+}
+node|z18-["addr:street"]::halo,
+relation[type="associatedStreet"] > node|z18-["addr:housenumber"]::halo
+{
+	symbol-fill-color: #ffffff; 
+	symbol-shape: circle; 
+	symbol-size: 22;
+	symbol-fill-opacity: 0.8;
+	z-index: -1;
+	text: eval(tag("addr:housenumber"));
+	font-size: 12;
+	text-color: black;
+	text-anchor-vertical: center;
+	text-offset-x: -3;
+	text-halo-color: #ffffff; 
+	text-halo-radius: 2; 
+	text-halo-opacity: 0.8;
+}
+node|z-17["addr:street"]::halo,
+relation[type="associatedStreet"] > node|z-17["addr:housenumber"]::halo
+{
+	symbol-fill-color: #ffffff; 
+	symbol-shape: circle; 
+	symbol-size: 22;
+	symbol-fill-opacity: 0.8;
+	z-index: -1;
+	text: ;
+	font-size: 12;
+	text-color: black;
+	text-anchor-vertical: center;
+	text-offset-x: -3;
+	text-halo-color: #ffffff; 
+	text-halo-radius: 2; 
+	text-halo-opacity: 0.8;
+}
+way|z18-["highway"]["name"] 
+{
+	color: #ffffff; 
+	width: 3;
+	font-size: 12; 
+	text-color: #000000; 
+	text-position: line; 
+	text: eval(tag("name")); 
+	text-offset: 0; 
+	text-halo-color: #ffffff; 
+	text-halo-radius: 2;
+}	
+way|z-17["highway"]["name"] 
+{
+	color: #ffffff; 
+	width: 3;
+	text: ; 
+}	
+
+	/* all known characters in different colors */
+
+area["addr:street"],
+relation[type="associatedStreet"][name] > area["addr:housenumber"]
+{ 
+	fill-color: eval(rgb(abs(cos(substring(tag(name),0.0)*36)), abs(sin(substring(tag(name),length(tag(name))/2.0)*36)), abs(cos(substring(tag(name),length(tag(name)))*36)))); 
+	color: eval(rgb(abs(cos(substring(tag(name),0.0)*36)), abs(sin(substring(tag(name),length(tag(name))/2.0)*36)), abs(cos(substring(tag(name),length(tag(name)))*36)))); 
+	text-halo-color: eval(rgb(abs(cos(substring(tag(name),0.0)*36)), abs(sin(substring(tag(name),length(tag(name))/2.0)*36)), abs(cos(substring(tag(name),length(tag(name)))*36)))); 
+}
+node["addr:street"=~/^[AАΑ]/]::halo,
+relation[type="associatedStreet"][name=~/^[AАΑ]/] > node["addr:housenumber"]::halo
+{
+	symbol-fill-color: eval(rgb(abs(cos(substring(tag(name),0.0)*36)), abs(sin(substring(tag(name),length(tag(name))/2.0)*36)), abs(cos(substring(tag(name),length(tag(name)))*36)))); 
+	text-halo-color: eval(rgb(abs(cos(substring(tag(name),0.0)*36)), abs(sin(substring(tag(name),length(tag(name))/2.0)*36)), abs(cos(substring(tag(name),length(tag(name)))*36)))); 
+}
+way["highway"]["name"=~/^[AАΑ]/]
+{
+	color: eval(rgb(abs(cos(substring(tag(name),0.0)*36)), abs(sin(substring(tag(name),length(tag(name))/2.0)*36)), abs(cos(substring(tag(name),length(tag(name)))*36)))); 
+	text-halo-color: eval(rgb(abs(cos(substring(tag(name),0.0)*36)), abs(sin(substring(tag(name),length(tag(name))/2.0)*36)), abs(cos(substring(tag(name),length(tag(name)))*36)))); 
+}	
+
+
+	
+
+/* have housenumber, miss street */
+node[addr:housenumber][!addr:street],
+area[addr:housenumber][!addr:street]
+{
+	isinassociatedstreetrelation: eval(cond(parent_tag(type)="associatedStreet",true,false));
+}
+area[addr:housenumber][!addr:street][prop(isinassociatedstreetrelation)=false]
+{ 
+	text: eval(cond(has_tag_key(name), concat("street? ", tag("addr:housenumber"), " | ", tag("name")),concat("street? ", tag("addr:housenumber"))));
+	text-halo-color: red; 
+	text-halo-radius: 2;
+	text-halo-opacity: 0.8;
+	width: 2; 
+	fill-color: #FF0000;  
+	fill-opacity:0.7; 
+	text-color: #000000; 
+	font-size: 10;
+	casing-width: 1; 
+	casing-color: #FFFF00;
+	
+}
+node[addr:housenumber][!addr:street][prop(isinassociatedstreetrelation)=false]::halo 
+{ 
+	text: eval(concat("street? ", tag("addr:housenumber")));
+	font-size: 12;
+	text-color: black;
+	text-halo-color: red; 
+	text-halo-radius: 2;
+	text-halo-opacity: 0.8;
+	text-anchor-vertical: center;
+	symbol-shape: triangle;
+	symbol-fill-opacity:0.7;
+	symbol-fill-color: #FF0000;
+	symbol-size: 30;
+	symbol-stroke-color: #FFFF00;
+	z-index: -1;	
+}
+
+/* have street, miss housenumber */
+area[addr:street][!addr:housenumber][!highway] 
+{ 
+	width: 3; 
+	text-halo-radius: 2;
+	fill-color: #FF0000;  
+	fill-opacity:0.7; 
+	text: eval(cond(has_tag_key(name), concat("number? | ", tag("name")), "number?"));
+	text-position: center;
+	text-color: #000000; 
+	font-size: 12;
+	casing-width: 1; 
+	casing-color: #FFFF00;	
+}
+node["addr:street"][!"addr:housenumber"]::halo 
+{ 
+	text: eval("number?");
+	text-color: black;
+	font-size: 12;
+	symbol-shape: triangle;
+	symbol-fill-opacity:0.7;
+	symbol-fill-color: #FF0000;
+	symbol-size: 30;
+	symbol-stroke-color: #FFFF00;
+	z-index: -1;	
+}
+
+/* have street, have addr is not correct */
+way["highway"]["addr:country"], 
+way["highway"]["addr:postcode"], 
+way["highway"]["addr:city"], 
+way["highway"]["addr:street"], 
+way["highway"]["addr:housenumber"]
+{
+	text: eval("no addr!");
+	color: red;
+	width: 5; 
+	dashes: 20,4;
+	dashes-background-color: #FFFF00;
+	object-z-index:-1.0;
+	text-halo-color: red; 
+	text-halo-radius: 2; 
+}
+	
+/* names of nodes */
+node["addr:housenumber"] 
+{
+	font-size: 10;
+	text-color: white;
+	text-anchor-vertical: center;
+	text-offset-y: -10;
+	text-offset-x: 8;
+}
+
+/* disable double numbers */
+node["addr:housenumber"][!name]
+{
+	font-size: 0;
+} 
+
+/* names for adress nodes without number */
+node[!"addr:housenumber"][name][addr:street]
+{
+	font-size: 10;
+	text-color: white;
+	text-anchor-vertical: center;
+	text-offset-y: -10;
+	text-offset-x: 8;
+} 
+
+/* text style of areas with number */
+way:closed["addr:housenumber"],
+relation[type=multipolygon]["addr:housenumber"],
+relation[type="associatedStreet"] > area["addr:housenumber"]
+{
+	text-color: black; 
+	font-size: 12;
+	text-position: center;
+
+}
+
+/* text style of highways and false addr */
+
+way[highway]
+{
+	text-color: black; 
+	font-size: 12;
+}
+	
+/* higway=residential without name */	
+way[highway=residential][!name]
+{
+	color: #FF0000; 
+	width: 5;
+	font-size: 12; 
+	text-color: #000000; 
+	text-position: line; 
+	text: eval("no name!"); 
+	text-offset: 0; 
+	text-halo-color: #FF0000; 
+	text-halo-radius: 2;
+	dashes: 20,4;
+	dashes-background-color: #FFFF00;
+	
+}
+/* tone down garages and other "small" buildings, as they usually do not have addr:*=* tags. */
+
+area[building=bunker][!"addr:housenumber"][!"addr:street"],
+area[building=cabin][!"addr:housenumber"][!"addr:street"],
+area[building=farm_auxiliary][!"addr:housenumber"][!"addr:street"],
+area[building=garage][!"addr:housenumber"][!"addr:street"],
+area[building=garages][!"addr:housenumber"][!"addr:street"],
+area[building=hut][!"addr:housenumber"][!"addr:street"],
+area[building=roof][!"addr:housenumber"][!"addr:street"],
+area[building=shed][!"addr:housenumber"][!"addr:street"]
+{
+	fill-color: #ffddf1; 
+	width: 1;
+}

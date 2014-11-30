@@ -1,0 +1,90 @@
+<presets xmlns="http://josm.openstreetmap.de/tagging-preset-1.0"
+         author="simon04"
+         version="1_2012-11-23"
+         link="http://wiki.openstreetmap.org/wiki/Proposed_features/Public_Transport"
+         shortdescription="Public Transport (one click)"
+         description="One click presets for the new Public Transport schema">
+    <group name="Public Transport (one click)" icon="presets/bus.png">
+
+        <item name="Bus Stop Position (+legacy)" type="node" icon="presets/bus.png">
+            <key key="public_transport" value="stop_position"/>
+            <key key="bus" value="yes"/>
+            <key key="highway" value="bus_stop"/>
+        </item>
+        <item name="Tram Stop Position (+legacy)" type="node" icon="presets/tram.png">
+            <key key="public_transport" value="stop_position"/>
+            <key key="tram" value="yes"/>
+            <key key="railway" value="tram_stop"/>
+        </item>
+        <item name="Rail Halt Stop Position (+legacy)" type="node" icon="presets/station.png">
+            <key key="public_transport" value="stop_position"/>
+            <key key="train" value="yes"/>
+            <key key="railway" value="halt"/>
+        </item>
+        <item name="Rail Station Stop Position (+legacy)" type="node" icon="presets/station.png">
+            <key key="public_transport" value="stop_position"/>
+            <key key="train" value="yes"/>
+            <key key="railway" value="station"/>
+        </item>
+
+        <separator/>
+
+        <item name="Bus Platform (+legacy)" type="way" icon="presets/platform_bus.png">
+            <key key="public_transport" value="platform"/>
+            <key key="bus" value="yes"/>
+            <key key="highway" value="platform"/>
+        </item>
+        <item name="Tram Platform (+legacy)" type="way" icon="presets/platform_rail.png">
+            <key key="public_transport" value="platform"/>
+            <key key="tram" value="yes"/>
+            <key key="railway" value="platform"/>
+        </item>
+        <item name="Rail Platform (+legacy)" type="way" icon="presets/platform_rail.png">
+            <key key="public_transport" value="platform"/>
+            <key key="train" value="yes"/>
+            <key key="railway" value="platform"/>
+        </item>
+
+        <separator/>
+
+        <item name="Bus Platform area (+legacy)" type="closedway" icon="presets/platform_bus.png">
+            <key key="public_transport" value="platform"/>
+            <key key="bus" value="yes"/>
+            <key key="highway" value="platform"/>
+            <key key="area" value="yes"/>
+        </item>
+        <item name="Tram Platform area (+legacy)" type="closedway" icon="presets/platform_rail.png">
+            <key key="public_transport" value="platform"/>
+            <key key="tram" value="yes"/>
+            <key key="railway" value="platform"/>
+            <key key="area" value="yes"/>
+        </item>
+        <item name="Rail Platform area (+legacy)" type="closedway" icon="presets/platform_rail.png">
+            <key key="public_transport" value="platform"/>
+            <key key="train" value="yes"/>
+            <key key="railway" value="platform"/>
+            <key key="area" value="yes"/>
+        </item>
+
+    </group>
+    
+    <item name="De Lijn" type="relation"
+        name_template="route(!{parent() type=route_master'?{'{operator} {ref:De_Lijn} ' | '{ref} '}'}{ref} ?{'{from} - {via} - {to} ' | '{from} - {to} ' | '{from} ' | '{to} '}?{'{note} '})"
+        name_template_filter="type=route route=bus">
+    </item>
+    
+    <item name="De Lijn" type="relation"
+        name_template="route_master(?{'{operator} {ref:De_Lijn} {ref} {name}'})"
+        name_template_filter="type=route_master route_master=bus">
+    </item>
+
+    <item name="De Lijn" type="relation"
+        name_template="route(!{parent() type=route_master'?{'{operator} {ref:De_Lijn} ' | '{ref} '}'}{ref} ?{'{from} - {via} - {to} ' | '{from} - {to} ' | '{from} ' | '{to} '}?{'{note} '})"
+        name_template_filter="type=route route=tram">
+    </item>
+    
+    <item name="De Lijn" type="relation"
+        name_template="route_master(?{'{operator} {ref:De_Lijn} {ref} {name}'})"
+        name_template_filter="type=route_master route_master=tram">
+    </item>
+</presets>

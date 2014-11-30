@@ -1,0 +1,464 @@
+<presets xmlns="http://josm.openstreetmap.de/tagging-preset-1.0"
+	author="Marc Gemis"
+	version="0.1"
+	shortdescription="Mapping in Flanders / Voor (beginnende) mappers in Vlaanderen"
+	description="De bedoeling is om een aantal veel gebruikte tag combinaties te groeperen, zodat beginnende
+	gebruikers sneller en beter kunnen mappen. Deze file zou de informatie op http://wiki.openstreetmap.org/wiki/NL:How_to_map_a moeten ondersteunen.">
+	<group name="BEmap">
+		<item name="Container for Glass Bottles" text.nl="Glasbol" type="node">
+			<key key="amenity" value="recycling"/>
+			<key key="recycling_type" value="container"/>
+			<key key="recycling:glass_bottles" value="yes"/>
+		</item>
+		<item name="Recycling Clothes" name.nl="Textielcontainer" type="node">
+			<label text="Edit Recycling Container for Clothes" text.nl="Wijzig Textielcontainer"/>
+			<space />
+			<key key="amenity" value="recycling"/>
+			<key key="recycling_type" value="container"/>
+			<key key="recycling:clothes" value="yes"/>
+			<optional>
+				<combo key="operator" text="Operator" text.nl="Organisatie" use_last_as_default="true" values="V.H.S. Europ,Caritas n.v.,Vlaams Inzamel Centrum Textiel,Opnieuw en Co,Wereld Missie Hulp"/>
+			</optional>
+		</item>
+		<item name="Life Ring" name.nl="Reddingsboei" type="node">
+			<key key="amenity" value="life_ring"/>
+			<key key="emergency" value="life_saving_equipment"/>
+			<key key="life_saving_equipment" value="life_buoy"/>
+		</item>
+		<item name="Bus Stop" name.nl="Bushalte" icon="presets/bus_small.png" type="node">
+			<link href="http://wiki.openstreetmap.org/wiki/Tag:highway=bus_stop"
+                  de.href="http://wiki.openstreetmap.org/wiki/DE:Tag:highway=bus_stop"
+				  es.href="http://wiki.openstreetmap.org/wiki/ES:Tag:highway=bus_stop"
+                  fr.href="http://wiki.openstreetmap.org/wiki/FR:Tag:highway=bus_stop"
+				  pt_BR.href="http://wiki.openstreetmap.org/wiki/Pt-br:Tag:highway=bus_stop"
+				  ru.href="http://wiki.openstreetmap.org/wiki/RU:Tag:highway=bus_stop" />
+			<label text="Edit bus stop" text.nl="Wijzig bushalte" />
+			<space />
+			<key key="highway" value="bus_stop" />
+			<optional>
+				<text key="name" text="Name" text.nl="Naam" />
+				<combo key="shelter" text="Shelter" text.nl="Bushokje" values="yes,no" />
+				<combo key="bench" text="Bench" text.nl="Zitbank" values="yes,no" />
+				<combo key="tactile_paving" text="Tactile Paving" text.nl="Noppentegels voor slechtzienden" values="yes,no" />
+				<text key="ref" text="Ref"  />
+				<text key="route_ref" text="Route refs" text.nl="Bediend door lijnen"/>
+				<text key="not_served_by" text="Not served by" text.nl="Niet bediend door lijnen (die er wel voorbij rijden)"/>
+				<text key="zone" text="Zone"/>
+				<text key="operator" text="Operator" text.nl="Uitbater" values="De Lijn,TEC,STIB/MIVB,Veolia" default="De Lijn"/>
+			</optional>
+		</item>
+		<item name="Stop_area" name.nl="Halte_attributen" icon="presets/relation.png" type="relation">
+			<key key="type" value="public_transport"/>
+			<key key="public_transport" value="stop_area"/>
+		</item>
+
+		<item name="Platform" name.nl="Perron" icon="presets/bus_small.png" type="way">
+			<key key="highway" value="platform"/>
+			<key key="public_transport" value="platform"/>
+		</item>
+
+		<item name="Stop position (bus)" name.nl="Punt waar voertuig halthoudt" icon="presets/bus_small.png" type="node">
+			<key key="bus" value="yes"/>
+			<key key="public_transport" value="stop_position"/>
+			<key key="name" value=""/>
+			<key key="name:fr" value=""/>
+			<key key="name:nl" value=""/>
+			<key key="shelter" value=""/>
+			<key key="addr:street" value=""/>
+			<key key="addr:city" value=""/>
+			<key key="addr:postcode" value=""/>
+			<key key="route_ref" value=""/>
+			<key key="source" value=""/>
+			<key key="network" value=""/>
+			<key key="operator" value=""/>
+			<key key="tram" value=""/>
+			<key key="highway" value=""/>
+			<key key="railway" value=""/>
+			<key key="zone" value=""/>
+		</item>
+
+		<item name="Bench" name.nl="Zitbank" icon="presets/bench.png" type="node,way">
+			<key key="amenity" value="bench"/>
+		</item>
+
+		<item name="Table 30km" name.nl="Verhoogd kruispunt" icon="presets/traffic_calming.png" type="way">
+			<key key="traffic_calming" value="table"/>
+			<key key="maxspeed" value="30"/>
+		</item>
+
+		<item name="Clear name, route_ref..." name.nl="Verwijder ODBL-tag" icon="presets/stop.png" type="node">
+			<key key="name" value=""/>
+			<key key="addr:street" value=""/>
+			<key key="addr:city" value=""/>
+			<key key="addr:postcode" value=""/>
+			<key key="route_ref" value=""/>
+			<key key="source" value=""/>
+			<key key="network" value=""/>
+			<key key="bus" value=""/>
+			<key key="name:fr" value=""/>
+			<key key="name:nl" value=""/>
+			<key key="operator" value=""/>
+			<key key="tram" value=""/>
+			<key key="railway" value=""/>
+			<key key="ref" value=""/>
+			<key key="zone" value=""/>
+		</item>
+
+		<item name="Clear ODBL tag" name.nl="Verwijder ODBL-tag" icon="presets/bench.png" type="node">
+			<key key="odbl" value=""/>
+		</item>
+        
+		<item name="Not a tramway" name.nl="Verwijder tramspoor" icon="presets/stop.png" type="way">
+			<key key="railway" value=""/>
+			<key key="electrified" value=""/>
+			<key key="frequency" value=""/>
+			<key key="gauge" value=""/>
+			<key key="voltage" value=""/>
+		</item>
+        
+		<item name="Not a highway" name.nl="Verwijder weg" icon="presets/stop.png" type="way">
+			<key key="highway" value=""/>
+			<key key="oneway" value=""/>
+			<key key="maxspeed" value=""/>
+			<key key="access" value=""/>
+			<key key="bus" value=""/>
+			<key key="ref" value=""/>
+		</item>
+        
+        <item name="Pedestrian crossing" name.nl="Oversteekplaats" type="node">
+            <key key="highway" value="crossing"/>
+        </item>
+
+        <item name="Footway" name.nl="Voetweg" type="way">
+            <key key="highway" value="footway"/>
+        </item>
+
+        <item name="Level crossing" name.nl="Onbewaakte spoorwegovergang" type="node">
+            <key key="railway" value="level_crossing"/>
+        </item>
+
+		<item name="Bread Vending Machine" name.nl="Broodautomaat" type="node">
+			<label text="Edit Bread Vending Machine" text.nl="Wijzig Broodautomaat"/>
+			<space />
+			<key key="amenity" value="vending_machine"/>
+			<key key="vending" value="bread"/>
+			<!-- ter onderscheiding met andere Automaten -->
+			<key key="name" value="Bread"/>
+			<optional>
+				<text key="operator" text="Bakery" text.nl="Bakker" default=""/>
+				<check key="payment:coins" value_on="yes" value_off="no" text="Coins ?" text.nl="Kleingeld ?" default="on"/>
+				<check key="payment:notes" value_on="yes" value_off="no" text="Notes ?" text.nl="Briefjes ?" default="off"/>
+				<check key="payment:cash" value_on="yes" value_off="no" text="Both ?" text.nl="Beide ?" default="off"/>				
+			</optional>
+		</item>
+		
+		<group name="Buildings" name.nl="Gebouwen">
+			<item name="Family House" name.nl="Gezinswoning" type="node,closedway">
+				<key key="building" value="house"/>
+				<key key="source" value="bing"/>
+			</item>
+			<item name="Shed" name.nl="Tuinhuisje" type="node,closedway">
+				<key key="building" value="shed"/>
+				<key key="source" value="bing"/>
+			</item>
+			<item name="Garage" type="node,closedway">
+				<key key="building" value="garage"/>
+				<key key="source" value="bing"/>
+			</item>
+			<item name="Garages" type="node,closedway">
+				<key key="building" value="garages"/>
+				<key key="source" value="bing"/>
+			</item>
+			<item name="Greenhouse" name.nl="Serre" type="node,closedway">
+				<key key="building" value="greenhouse"/>
+				<key key="source" value="bing"/>
+			</item>
+			<item name="Apartments" name.nl="Appartementen" btype="node,closedway">
+				<key key="building" value="apartments"/>
+				<key key="source" value="bing"/>
+			</item>
+			<item name="Building (Residential)" name.nl="Gebouw (residentieel)" type="node,closedway">
+				<key key="building" value="residential"/>
+				<key key="source" value="bing"/>
+			</item>
+			<item name="Building (in general)" name.nl="Gebouw (algemeen)" type="node,closedway">
+				<key key="building" value="yes"/>
+				<key key="source" value="bing"/>
+			</item>
+		</group>
+		
+		<group name="Heritage" name.nl="Erfgoed">
+			<item name="Protected Building (Flemish - By 'Onroerend Erfgoed')" name.nl="Beschermd Monument (door Onroerend Erfgoed)" type="node,closedway">
+				<link href="http://wiki.openstreetmap.org/wiki/Proposed_features/heritage" />
+				<label text="Edit Protected Monument" text.nl="Wijzig Beschermd Monument"/>
+				<space />
+				<key key="heritage" value="4"/>
+				<key key="heritage:operator" value="OnroerendErfgoed"/>
+				<optional>
+					<text key="name" text="Name" text.nl="Naam" value=""/>
+					<text key="ref:OnroerendErfgoed" text="Ref (Onroerend Erfgoed)" text.nl="Referentie (Onroerend Erfgoed)" value=""/>
+					<combo key="OnroerendErfgoed:criteria" text="Type">
+						<list_entry value="A" display_value="Archeology" display_value.nl="Archeologie" short_description=""/>
+						<list_entry value="M" display_value="Monument or Building" display_value.nl="Bouwkundig erfgoed" short_description=""/>
+						<list_entry value="L" display_value="Landscape" display_value.nl="Landschap" short_description=""/>
+						<list_entry value="VM" display_value="Maritime" display_value.nl="Varend en maritiem erfgoed" short_description=""/>
+						<list_entry value="DL" display_value="Partial Landscape" display_value.nl="Deel landschap" short_description=""/>
+						<list_entry value="S" display_value="Site" display_value.nl="Gezicht" short_description=""/>
+					</combo>
+				</optional>
+			</item>
+			<item name="Protected Monument (Brussels)" name.nl="Beschermd Monument (Brussel)" type="node,closedway">
+				<link href="http://wiki.openstreetmap.org/wiki/Proposed_features/heritage" />
+				<label text="Edit Protected Monument" text.nl="Wijzig Beschermd Monument"/>
+				<space />
+				<key key="heritage" value="4"/>
+				<key key="heritage:operator" value="aatl"/>
+				<optional>
+					<text key="name" text="Name" text.nl="Naam" value=""/>
+					<text key="ref:aatl" text="Ref (Monuments et sites)" text.nl="Referentie (Monuments et sites)" value=""/>
+					<combo key="aatl:criteria" text="Type">
+						<list_entry value="P" display_value="Protection" short_description="For old or partially destroyed buildings" short_description.nl="Voor oude of gedeeltelijk vernielde gebouwen"/>
+						<list_entry value="R" display_value="Restauration" short_description="For old building in good shape" short_description.nl="Voor oude gebouwen in goede staat - die behouden moet blijven"/>
+						<list_entry value="S" display_value="Site" short_description=""/>
+						<list_entry value="SA" display_value="Archeologic Site" display_value.nl="Archeologische Site" short_description=""/>
+					</combo>
+				</optional>
+			</item>
+			<item name="Protected Monument (Wallonia)" name.nl="Beschermd Monument (Wallonië)" type="node,closedway">
+				<link href="http://wiki.openstreetmap.org/wiki/Proposed_features/heritage" />
+				<label text="Edit Protected Monument" text.nl="Wijzig Beschermd Monument"/>
+				<space />
+				<key key="heritage" value="4"/>
+				<key key="heritage:operator" value="ctl"/>
+				<optional>
+					<text key="name" text="Name" text.nl="Naam" value=""/>
+					<text key="ref:ctl" text="Ref" text.nl="Referentie" value=""/>
+					<combo key="ctl:exception" text="Exception" text.nl="Uitzondering">
+						<list_entry value="Y" display_value="Yes" display_value.nl="Ja" short_description=""/>
+						<list_entry value="N" display_value="No" display_value.nl="Nee" short_description=""/>
+					</combo>
+					<combo key="aatl:criteria" text="Type" text.nl="Type">
+						<list_entry value="M" display_value="Monument  Building" display_value.nl="Monument - gebouw" short_description=""/>
+						<list_entry value="S" display_value="Site" display_value.nl="Site" short_description=""/>
+						<list_entry value="ZP" display_value="Protected Area" display_value.nl="Beschermde zone" short_description=""/>
+						<list_entry value="EA" display_value="Architectoral Group" display_value.nl="Architectorische groep" short_description=""/>
+						<list_entry value="SA" display_value="Archeologic Site" display_value.nl="Archeologische site" short_description=""/>
+					</combo>
+				</optional>
+			</item>
+		</group>
+	 	<group name="Pets, Animals" name.nl="Huisdieren - dieren">
+			<item name="Dog school" name.nl="Hondenschool" type="node,closedway">
+				<label text="Edit Dogschool" text.nl="Wijzig hondenschool"/>
+				<space />
+				<key key="animal" value="school"/>
+				<key key="school_type" value="dog"/> 
+				<key key="amenity" value="animal_training"/>
+				<key key="animal_training" value="dog"/>
+				<optional>
+					<text key="name" text="Name" text.nl="Naam"/>
+					<text key="website" text="Website"/>
+					<text key="network" text="Federation" text.nl="Federatie" default="Sint-Hubertus"/>
+				</optional>
+			</item>
+			<item name="Vending machine for plastic bags" name.nl="Poepzakjesautomaat" type="node">
+				<label text="Edit vending machine" text.nl="Wijzig Poepzakjesautomaat"/>
+				<space />
+				<key key="amenity" value="vending_machine"/>
+				<key key="vending" value="excrement_bags"/>
+				<key key="payment" value="none"/>
+				<!-- ter onderscheiding met andere Automaten -->
+				<key key="name" value="Dog-Station"/>
+				<optional>
+					<text key="operator" text="Provider" text.nl="Provider" default=""/>
+				</optional>
+			</item>
+			<item name="Wellness for Pets" name.nl="Hondenkapsalon" type="node,closedway">
+				<label text="Edit Wellness for Pet" name.nl="Wijzig hondenkapsalon"/>
+				<space />
+				<key key="animal" value="wellness"/>
+				<optional>
+					<text key="name" text="Name" default=""/>
+					<combo key="dog" text="Dogs" text.nl="Honden">
+						<list_entry value="yes" display_value="Yes" display_value.nl="Ja" short_description=""/>
+						<list_entry value="no" display_value="No" display_value.nl="Nee" short_description=""/>
+					</combo>
+					<combo key="cat" text="Cats" text.nl="Katten">
+						<list_entry value="yes" display_value="Yes" display_value.nl="Ja" short_description=""/>
+						<list_entry value="no" display_value="No" display_value.nl="Nee" short_description=""/>
+					</combo>
+					
+				</optional>
+			</item>
+		</group>
+
+		<group name="Maxspeeds" name.nl="Maximumsnelheden">
+			<item name="Within City Limits - 50" name.nl="Bebouwde Kom - 50">
+				<key key="maxspeed" value="50"/>
+				<key key="zone:traffic" value="BE:urban"/>
+			</item>
+			<item name="Within City Limits - Zone 30" name.nl="Bebouwde Kom - zone 30">
+				<key key="maxspeed" value="30"/>
+				<key key="source:maxspeed" value="zone30"/>
+				<key key="zone:traffic" value="BE:urban"/>
+			</item>
+			<item name="Living Street (max 20)" name.nl="Woonerf (max 20)">
+				<key key="highway" value="living_street"/>
+				<key key="maxspeed" value="20"/>
+				<key key="zone:traffic" value="BE:urban"/>
+			</item>
+			<item name="Rural - Max 50" name.nl="Buiten Bebouwde Kom - Max 50">
+				<key key="maxspeed" value="50"/>
+				<key key="source:maxspeed" value="traffic_sign"/>
+				<key key="zone:traffic" value="BE:rural"/>
+			</item>
+			<item name="Rural - Max 70" name.nl="Buiten Bebouwde Kom - Max 70">
+				<key key="maxspeed" value="70"/>
+				<key key="source:maxspeed" value="traffic_sign"/>
+				<key key="zone:traffic" value="BE:rural"/>
+			</item>
+			<item name="Rural - Zone 50" name.nl="Buiten Bebouwde Kom - zone 50">
+				<key key="maxspeed" value="50"/>
+				<key key="source:maxspeed" value="zone50"/>
+				<key key="zone:traffic" value="BE:rural"/>
+			</item>
+			<item name="Rural - Zone 70" name.nl="Buiten Bebouwde Kom - zone 70">
+				<key key="maxspeed" value="70"/>
+				<key key="source:maxspeed" value="zone70"/>
+				<key key="zone:traffic" value="BE:rural"/>
+			</item>
+		</group>
+		
+		<group name="Regional Walking Networks" name.nl="Wandelknooppunten">
+			<item name="Node" name.nl="Knooppunt" type="node">
+				<label text="Edit Node" text.nl="Wijzig knooppunt"/>
+				<space />
+				<text key="rwn_ref" name="Number" name.nl="Nummer"/>
+			</item>
+			<item name="Route" name.nl="Route" icon="presets/path.png" type="relation">
+				<!-- link href="" /> -->
+				<label text="Edit Route" text.nl="Wijzig Route"/>
+				<space />
+				<key key="type" value="route"/>
+				<key key="route" value="foot"/>
+				<key key="network" value="rwn"/>
+				<text key="note" text="Between nodes (xx-yy)" text.nl="Tussen knooppunten (xx-yy)"/>
+				<check key="fixme" value_on="incomplete" value_off="" text="Incomplete ?" text.nl="Onvolledig ?" default="off"/>
+				<roles>
+					<role key="" text="route" text.nl="route" requisite="required" type="relation" member_expression="type=route"/>
+				</roles>
+			</item>
+		</group>
+		
+		<group name="Railway Crossing" name.nl="Spoorwegovergang">
+			<item name="Full Barriers - Cat 1" name.nl="Volledige slagbomen - Cat 1" type="node">
+				<key key="railway" value="level_crossing"/>
+				<key key="level_crossing:category" value="category1"/>
+				<key key="signal" value="yes"/>
+				<key key="barriers" value="full"/>
+				<key key="traffic_sign" value="yes"/>
+			</item>
+			<item name="Half Barrier - Cat 2" name.nl="Halve slagbomen - Cat 2" type="node">
+				<key key="railway" value="level_crossing"/>
+				<key key="level_crossing:category" value="category2"/>
+				<key key="signal" value="yes"/>
+				<key key="barriers" value="partly"/>
+				<key key="traffic_sign" value="yes"/>
+			</item>
+			<item name="Only Signal - Cat 3" name.nl="Enkel signaal - Cat 3" type="node">
+				<key key="railway" value="level_crossing"/>
+				<key key="level_crossing:category" value="category3"/>
+				<key key="signal" value="yes"/>
+				<key key="barriers" value="no"/>
+				<key key="traffic_sign" value="yes"/>
+			</item>
+			<item name="Only Traffic Sign - Cat 4" name.nl="Enkel verkeersbord - Cat 4" type="node">
+				<key key="railway" value="level_crossing"/>
+				<key key="level_crossing:category" value="category4"/>
+				<key key="signal" value="no"/>
+				<key key="barriers" value="no"/>
+				<key key="traffic_sign" value="yes"/>
+			</item>
+			<item name="Unprotected - Cat 5" name.nl="Onbewaakte overgang - Cat 5" type="node">
+				<key key="railway" value="level_crossing"/>
+				<key key="level_crossing:category" value="category5"/>
+				<key key="signal" value="no"/>
+				<key key="barriers" value="no"/>
+				<key key="traffic_sign" value="no"/>
+			</item>
+		</group>
+		<!--
+		<group name="Churches, Chapels" name.nl="Kerken, Kapellen">
+		</group>
+		-->
+		
+		<group name="Healthcare" name.nl="Gezondheidssector">
+			<item name="Physiotherapist" name.nl="Kinesist">
+				<label text="Edit Physiotherapist" text.nl="Wijzig Kinesist"/>
+				<space />
+				<key key="medical_system:western" value="yes"/>
+				<key key="health_facility:type" value="office"/>
+				<key key="office" value="therapist"/>
+				<key key="health_specialty:physiotherapy" value="yes"/>
+				<optional>
+					<text key="name" text="Office Name" text.nl="Naam praktijk" default=""/>
+					<text key="operator" text="Physiotherapist" text.nl="Kinesist" default=""/>
+				</optional>
+			</item>
+			<item name="Dentist" name.nl="Tandarts">
+				<label text="Edit Dentist" text.nl="Wijzig tandarts"/>
+				<space />
+				<key key="medical_system:western" value="yes"/>
+				<key key="health_facility:type" value="office"/>
+				<key key="office" value="physician"/>
+				<key key="health_specialty:dentistry" value="yes"/>
+				<optional>
+					<text key="name" text="Office Name" text.nl="Naam praktijk" default=""/>
+					<text key="operator" text="Doctor's Name" text.nl="Naam dokter" default=""/>
+				</optional>
+			</item>
+			<item name="Huisarts">
+				<label text="edit"/>
+				<space />
+				<key key="medical_system:western" value="yes"/>
+				<key key="health_facility:type" value="office"/>
+				<key key="office" value="physician"/>
+				<key key="health_specialty:internal_medicine" value="yes"/>
+				<key key="health_specialty:family_medicine" value="yes"/>
+				<key key="health_specialty:general" value="yes"/>
+				<key key="amenity" value="doctors"/>
+				<optional>
+					<text key="name" text="Office Name" text.nl="Naam praktijk" default=""/>
+					<text key="operator" text="Doctor's Name" text.nl="Naam dokter" default=""/>
+					<text key="home_visit" text="Home Visits ?" text.nl="Huisbezoeken ?" default="yes"/>
+				</optional>
+			</item>
+			<item name="Specialist">
+				<label text="edit"/>
+				<space />
+				<key key="medical_system:western" value="yes"/>
+				<key key="health_facility:type" value="office"/>
+				<key key="office" value="physician"/>
+				<key key="amenity" value="doctors"/>
+				<optional>
+					<text key="name" text="Office Name" text.nl="Naam praktijk" default=""/>
+					<text key="operator" text="Doctor's Name" text.nl="Naam dokter" default=""/>
+					<text key="home_visit" text="Home Visits ?" text.nl="Huisbezoeken ?" default="yes"/>
+					<combo key="healthcare:speciality" text="Type">
+						<list_entry value="ophthalmology" display_value="Ophthalmology (Eyes)" display_value.nl="Oogarts" short_description=""/>
+						<list_entry value="orthopaedics" display_value="Orthopaedics" display_value.nl="Specialist Orthopedie" short_description=""/>
+						<list_entry value="otolaryngology" display_value="Otolaryngology (Nose-Ears-Throath)" display_value.nl="Specialist Neus-Keel-Oren" short_description=""/>
+						<list_entry value="radiology" display_value="Radiology" display_value.nl="Radioloog" short_description=""/>
+						<list_entry value="neurology" display_value="Neurology" display_value.nl="Neuroloog" short_description=""/>
+						<list_entry value="neuropsychiatry" display_value="Neuropsychiatry" display_value.nl="Neuro-Psychiatrie" short_description=""/>
+						<list_entry value="psychiatry" display_value="Phsychiatry" display_value.nl="Specialist Psychiatrie" short_description=""/>
+						<list_entry value="cardiology" display_value="Cardiology" display_value.nl="Cardioloog (Hartziekten)" short_description=""/>
+						<list_entry value="dermatology" display_value="Dematology (Skin)" display_value.nl="Dermatoloog (Huidarts)" short_description=""/>
+						<list_entry value="gynaecology" display_value="Gynaecology" display_value.nl="Gynecoloog (Verloskunde)" short_description=""/>
+						<list_entry value="urology" display_value="Urology" display_value.nl="Uroloog" short_description=""/>
+					</combo>
+				</optional>
+			</item>
+		</group>
+	</group>
+</presets>

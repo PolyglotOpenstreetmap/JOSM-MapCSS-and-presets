@@ -1,0 +1,297 @@
+
+meta   
+{
+	title: "Coloured Postcode";
+	author: "geozeisig"; 
+	version: "1.11_2013-01-31"; 
+	description: "Style to ease mapping of Postcode by colouring streets and houses and nodes";
+        link: "http://josm.openstreetmap.de/wiki/Styles/Coloured_Streets";
+        watch-modified: true;
+}
+
+/* highlight buildings and highways */
+area["building"]["addr:postcode"="3000"] 
+{
+	color: #FFF100; 
+	fill-color: #FFF100; 
+	width: 3;
+}
+node["addr:postcode"="3000"]::halo 
+{
+	symbol-fill-color: #FFF100; 
+	symbol-shape: circle; 
+	symbol-size: 20;
+	z-index: -1;
+} 
+way["postal_code"="3000"] 
+{
+	color: #FFF100; 
+	width: 3;
+	font-size: 12; 
+	text-color: #003300; 
+	text-position: line; 
+	text: "postal_code"; 
+	text-offset: 0; 
+	text-halo-color: #FFF100; 
+	text-halo-radius:2
+}
+
+area[building]["addr:postcode"="3001"] 
+{
+	color: #FF00FF; 
+	fill-color: #FF00FF; 
+	width: 3;
+}
+node["addr:postcode"="3001"]::halo 
+{
+	symbol-fill-color: #FF00FF; 
+	symbol-shape: circle;
+	symbol-size: 20;
+	z-index: -1;
+} 
+way["postal_code"="3001"] 
+{
+	color: #FF00FF; 
+	width: 3;
+	font-size: 12; 
+	text-color: #000000; 
+	text-position: line; 
+	text: "postal_code"; 
+	text-offset: 0; 
+	text-halo-color: #FF00FF; 
+	text-halo-radius:2
+}
+
+area[building]["addr:postcode"$="3010"] 
+{
+	color: #A45200; 
+	fill-color: #A45200; 
+	width: 3;
+}
+node["addr:postcode"$="3010"]::halo 
+{
+	symbol-fill-color: #A45200; 
+	symbol-shape: circle; 
+	symbol-size: 20;
+	z-index: -1;
+} 
+way["postal_code"$="3010"] 
+{
+	color: #A45200; 
+	width: 3;
+	font-size: 12; 
+	text-color: #000000; 
+	text-position: line; 
+	text: "postal_code"; 
+	text-offset: 0; 
+	text-halo-color: #A45200; 
+	text-halo-radius:2
+}
+
+area[building]["addr:postcode"$="3360"] 
+{
+	fill-color: #FB9A99; 
+	width: 3;
+}
+node["addr:postcode"$="3360"]::halo 
+{
+	color: #FB9A99; 
+	symbol-fill-color: #FB9A99; 
+	symbol-shape: circle; 
+	symbol-size: 20;
+	z-index: -1;
+} 
+way["postal_code"$="3360"] 
+{
+	color: #FB9A99; 
+	width: 3;
+	font-size: 12; 
+	text-color: #000000; 
+	text-position: line; 
+	text: "postal_code"; 
+	text-offset: 0; 
+	text-halo-color: #FB9A99; 
+	text-halo-radius:2
+}
+
+area[building]["addr:postcode"$="3018"] 
+{
+	color: #FECC34; 
+	fill-color: #FECC34; 
+	width: 3;
+}
+node["addr:postcode"$="3018"]::halo 
+{
+	symbol-fill-color: #FECC34; 
+	symbol-shape: circle; 
+	symbol-size: 20;
+	z-index: -1;
+} 
+way["postal_code"$="3018"] 
+{
+	color: #FECC34; 
+	width: 3;
+	font-size: 12; 
+	text-color: #000000; 
+	text-position: line; 
+	text: "postal_code"; 
+	text-offset: 0; 
+	text-halo-color: #FECC34; 
+	text-halo-radius:2
+}
+
+area[building]["addr:postcode"$="3050"] 
+{
+	color: #1F78B4; 
+	fill-color: #1F78B4; 
+	width: 3;
+}
+node["addr:postcode"$="3050"]::halo 
+{
+	symbol-fill-color: #1F78B4; 
+	symbol-shape: circle; 
+	symbol-size: 20;
+	z-index: -1;
+} 
+way["postal_code"$="3050"] 
+{
+	color: #1F78B4; 
+	width: 3;
+	font-size: 12; 
+	text-color: #000000; 
+	text-position: line; 
+	text: "postal_code"; 
+	text-offset: 0; 
+	text-halo-color: #1F78B4; 
+	text-halo-radius:2
+}
+
+area[building]["addr:postcode"$="3020"] 
+{
+	color: #6A3D9A; 
+	fill-color: #6A3D9A; 
+	width: 3;
+}
+node["addr:postcode"$="3020"]::halo 
+{
+	symbol-fill-color: #6A3D9A; 
+	symbol-shape: circle; 
+	symbol-size: 20;
+	z-index: -1;
+} 
+way["postal_code"$="3020"] 
+{
+	color: #6A3D9A; 
+	width: 3;
+	font-size: 12; 
+	text-color: #000000; 
+	text-position: line; 
+	text: "postal_code"; 
+	text-offset: 0; 
+	text-halo-color: #6A3D9A; 
+	text-halo-radius:2
+}
+
+area[building]["addr:postcode"$="8"] 
+{
+	color: #A6CEE3; 
+	fill-color: #A6CEE3; 
+	width: 3;
+}
+node["addr:postcode"$="8"]::halo 
+{
+	symbol-fill-color: #A6CEE3; 
+	symbol-shape: circle; 
+	symbol-size: 20;
+	z-index: -1;
+} 
+way["postal_code"$="8"] 
+{
+	color: #A6CEE3; 
+	width: 3;
+	font-size: 12; 
+	text-color: #000000; 
+	text-position: line; 
+	text: "postal_code"; 
+	text-offset: 0; 
+	text-halo-color: #A6CEE3; 
+	text-halo-radius:2
+}
+
+area[building]["addr:postcode"$="9"] 
+{
+	fill-color: #3ED2A6; 
+	width: 3;
+}
+node["addr:postcode"$="9"]::halo 
+{
+	color: #3ED2A6; 
+	symbol-fill-color: #3ED2A6; 
+	symbol-shape: circle; 
+	symbol-size: 20;
+	z-index: -1;
+} 
+way["postal_code"$="9"] 
+{
+	color: #3ED2A6; 
+	width: 3;
+	font-size: 12; 
+	text-color: #000000; 
+	text-position: line; 
+	text: "postal_code"; 
+	text-offset: 0; 
+	text-halo-color: #3ED2A6; 
+	text-halo-radius:2
+}
+
+area[building]["addr:postcode"$="3050"] 
+{
+	color: #0FF05E; 
+	fill-color: #0FF05E; 
+	width: 3;
+}
+node["addr:postcode"$="3050"]::halo 
+{
+	symbol-fill-color: #0FF05E; 
+	symbol-shape: circle; 
+	symbol-size: 20;
+	z-index: -1;
+} 
+way["postal_code"$="3050"] 
+{
+	color: #0FF05E; 
+	width: 3;
+	font-size: 12; 
+	text-color: #000000; 
+	text-position: line; 
+	text: "postal_code"; 
+	text-offset: 0; 
+	text-halo-color: #0FF05E; 
+	text-halo-radius:2
+}
+	
+
+/* all marked  housenumber in black color */
+node["addr:postcode"] 
+{
+	font-size: 10;
+	text-color: black; 
+} 
+area[building]["addr:postcode"] 
+{
+	text-color: black; 
+	font-size: 10;
+}
+	
+
+
+
+
+/* highlight boundary */
+relation[type=boundary][boundary=postal_code] 
+{
+	width: 7; 
+	color: purple; 
+	dashes: 10;
+}
+

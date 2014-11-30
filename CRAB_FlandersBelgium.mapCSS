@@ -1,0 +1,170 @@
+meta
+{
+    title: "Addresses metadata from CRAB for Flanders in Belgium";
+    description: "Show metadata and distinguish between new (import from official CRAB DB) and existing addresses on nodes and buildings in order to facilitate the integration";
+    version: "1.0_2014-10-28";
+    author: "Polyglot";
+    link: "http://josm.openstreetmap.de/wiki/Styles/CRAB_FlandersBelgium";
+    min-josm-version: "5198";
+}
+
+meta[lang=nl]
+{
+    title: "Bijkomende adresinformatie voor adressen in Vlaanderen";
+    description: "Laat toe om verschil te zien tussen wat nieuw (import van CRAB) is en wat reeds bestaat in OSM, om zo het integreren van de data te vergemakkelijken";
+}
+
+node|z16-["addr:housenumber"]:new::housenumber
+ {text-color: cyan;
+  font-size: 24;
+  text:  tag("addr:housenumber");
+  text-halo-radius: 3;
+  text-offset-y: 0;}
+  
+node|z16-[fixme]:new::fixme
+ {text-color: cyan;
+  font-size: 18;
+  text:  tag("fixme");
+  text-halo-radius: 3;
+  text-offset-y: 60;}
+  
+area|z16-[fixme]:new::fixme
+ {text-color: cyan;
+  font-size: 18;
+  text:  tag("fixme");
+  text-halo-radius: 3;
+  text-offset-y: 60;}
+  
+node|z20-["addr:street"]:new::street
+ {text-color: blue;
+  font-size: 20;
+  text:  tag("addr:street");
+  text-halo-radius: 2;
+  text-offset-y: 30;}
+
+/*We (ab)use keys which will get discarded automatically upon upload*/
+node|z15-["tiger:source"]::CRABorigin
+ {text-color: yellow;
+  font-size: 12;
+  text:  tag("tiger:source");
+  text-halo-radius: 2;
+  text-offset-y: -20;}
+  
+/*We (ab)use keys which will get discarded automatically upon upload*/
+node|z15-["odbl:note"]::CRABorigin,
+node["CRAB:herkomst"]::CRABorigin
+ {text-color: pink;
+  font-size: 12;
+  text:  tag("odbl:note");
+  text-halo-radius: 2;
+  text-offset-x: -20;
+  text-offset-y: -30;}
+  
+node|z15-["odbl:note"="CRAB:afgeleidVanGebouw"]::CRABorigin,
+node["CRAB:herkomst"="afgeleidVanGebouw"]::CRABorigin
+ {text-color: green;
+  font-size: 12;
+  text:  tag("odbl:note");
+  text-halo-radius: 2;
+  text-offset-x: -20;
+  text-offset-y: -30;}
+  
+node|z15-["odbl:note"="CRAB:afgeleidVanPerceelGrb"]::CRABorigin,
+node["CRAB:herkomst"="afgeleidVanPerceelGrb"]::CRABorigin
+ {text-color: pink;
+  font-size: 12;
+  text:  tag("odbl:note");
+  text-halo-radius: 2;
+  text-offset-x: -20;
+  text-offset-y: -30;}
+  
+node|z15-["addr:flats"]::flats
+ {text-color: pink;
+  font-size: 18;
+  text:  tag("addr:flats");
+  text-halo-radius: 2;
+  text-offset-y: 65;}
+  
+node|z15-["addr:flats:1"]::flats1
+ {text-color: pink;
+  font-size: 18;
+  text:  tag("addr:flats:1");
+  text-halo-radius: 2;
+  text-offset-y: 50;}
+  
+node|z15-["addr:flats:2"]::flats2
+ {text-color: pink;
+  font-size: 18;
+  text:  tag("addr:flats:2");
+  text-halo-radius: 2;
+  text-offset-y: 80;}
+  
+node|z15-["addr:housenumber"]!:new::existinghousenumber
+ {text-color: orange;
+  font-size: 18;
+  text:  tag("addr:housenumber");
+  text-halo-radius: 2;
+  text-offset-y: 10;}
+
+area|z15-["addr:housenumber"]!:new::existinghousenumber
+ {text-color: orange;
+  fill-color: blue;
+  font-size: 22;
+  text:  tag("addr:housenumber");
+  text-anchor-horizontal: center;
+  text-anchor-vertical: center;
+  text-position: center;}
+
+relation[type=associatedStreet] > area|z15-[building]!:new::existinghousenumberPC
+ {text-color: orange;
+  font-size: 12;
+  text: concat(parent_tag("addr:postcode"), " ",  parent_tag("addr:city"));
+  text-position: line;
+  text-offset-y: 20;
+  width: 6;
+  color: purple;
+  opacity: 0.5;}
+
+area|z15-["addr:housenumber"]:new::newhousenumber
+ {text-color: red;
+  fill-color: green;
+  font-size: 22;
+  text:  tag("addr:housenumber");
+  text-anchor-horizontal: center;
+  text-anchor-vertical: center;
+  text-position: center;
+  text-halo-radius: cond(eval(JOSM_search("selected")), 3, 1);}
+
+relation[type=associatedStreet] > way|z15-[building]:new::newhousenumberPC
+ {text-color: red;
+  font-size: 12;
+  text: concat(parent_tag("addr:postcode"), " ",  parent_tag("addr:city"));
+  text-anchor-horizontal: center;
+  text-position: line;
+  text-offset-y: 20;
+  width: 6;
+  color: purple;
+  opacity: 0.5;}
+
+area[building]["addr:postcode"]::dontupload,
+area[building]["addr:city"]::dontupload,
+area[building][/^CRAB:/]::dontupload
+ {z-index: 50;
+  fill-color: red;
+  text-color: cyan;
+  text-halo-radius: 3;
+  font-size: 25;
+  text: cond(eval(JOSM_search("!modified")), "Don't upload without removing addr:city, addr:postcode or CRAB:* tags;", "");
+  text-position: center;
+  text-offset: 20}
+  
+node["addr:postcode"]:new::dontupload,
+node["addr:city"]:new::dontupload,
+node[/^CRAB:/]:new::dontupload
+ {text-color: cyan;
+  font-size: 25;
+  text: Don't upload without removing addr:city, addr:postcode or CRAB:* tags;
+  text-halo-radius: 3;
+  text-offset-x: -50;
+  text-offset-y: 40;}
+  
