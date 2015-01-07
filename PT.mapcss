@@ -118,7 +118,7 @@ node|z15-[odbl=new][public_transport=platform]::zone2
   text-offset-y: 15;
   z-index:2.0;}
 
-node[public_transport=platform][network*=";"]::network
+node|z15-[public_transport=platform][network*=";"]::network
  {text-color: cyan;
   font-size: 30;
   text:  tag("network");
@@ -136,7 +136,7 @@ node|z18-[public_transport=platform]::name
   text-halo-radius: 2;
   text-offset-y: 15;}
 
-node|z12-["ref:De_Lijn"]::ref
+node|z14-["ref:De_Lijn"]::ref
   {text-color: blue;
   font-size: 17;
   text: tag("ref:De_Lijn");
@@ -145,7 +145,7 @@ node|z12-["ref:De_Lijn"]::ref
   text-offset-y: -20;
   z-index:3.0;}
 
-node|z12-["ref:TECB"]::refb
+node|z14-["ref:TECB"]::refb
   {text-color: red;
   font-size: 17;
   text:  tag("ref:TECB");
@@ -154,7 +154,7 @@ node|z12-["ref:TECB"]::refb
   text-offset-y: -40;
   z-index:3.0;}
   
- node|z12-["ref:TECH"]::refh
+ node|z14-["ref:TECH"]::refh
   {text-color: orange;
   font-size: 17;
   text:  tag("ref:TECH");
@@ -163,7 +163,7 @@ node|z12-["ref:TECB"]::refb
   text-offset-y: -60;
   z-index:3.0;}
   
- node|z12-["ref:TECC"]::refc
+ node|z14-["ref:TECC"]::refc
   {text-color: cyan;
   font-size: 17;
   text:  tag("ref:TECC");
@@ -172,7 +172,7 @@ node|z12-["ref:TECB"]::refb
   text-offset-y: -20;
   z-index:3.0;}
   
- node|z12-["ref:TECN"]::refn
+ node|z14-["ref:TECN"]::refn
   {text-color: white;
   font-size: 17;
   text:  tag("ref:TECN");
@@ -181,7 +181,7 @@ node|z12-["ref:TECB"]::refb
   text-offset-y: -80;
   z-index:3.0;}
   
- node|z12-["ref:TECL"]::refl
+ node|z14-["ref:TECL"]::refl
   {text-color: black;
   font-size: 17;
   text:  tag("ref:TECL");
@@ -190,7 +190,7 @@ node|z12-["ref:TECB"]::refb
   text-offset-y: -60;
   z-index:3.0;}
   
- node|z12-["ref:TECX"]::refx
+ node|z14-["ref:TECX"]::refx
   {text-color: yellow;
   font-size: 17;
   text:  tag("ref:TECX");
@@ -224,7 +224,7 @@ relation[route=bus] > node|z16-::parent_ref
   text-offset-y: -40;
   z-index:5.0;}
 
-relation[public_transport=stop_area] > node|z10-::parent_name
+relation[public_transport=stop_area] > node|z12-::parent_name
  {text-color: yellow;
   font-size: 16;
   text: parent_tag(name);
